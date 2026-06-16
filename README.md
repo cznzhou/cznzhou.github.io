@@ -20,4 +20,32 @@
 
 ## 📁 项目结构
 
+```
+cznzhou.github.io/
+├── index.html               # 主页面
+├── README.md                # 项目说明文档
+├── LICENSE                  # 许可证
+├── assets/                  # 静态资源目录
+│   ├── css/
+│   │   └── style.css        # 样式表
+│   ├── js/
+│   │   └── script.js        # JavaScript 脚本（邮箱复制功能）
+│   └── images/
+│       └── avatar.jpg       # 个人头像
+```
+
+## 🛠️ 本地开发
+
+1. 克隆本仓库：
+   ```bash
+   git clone https://github.com/cznzhou/cznzhou.github.io.git
+   ```
+2. 直接在浏览器打开 `index.html` 即可预览。
+
+## 📬 联系我
+
+- GitHub: [@cznzhou](https://github.com/cznzhou)
+- 邮箱: cznzhou520@gmail.com
+
+
 
