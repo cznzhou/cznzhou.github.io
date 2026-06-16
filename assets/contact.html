@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cznzhou - 联系方式</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <style>
+      .contact-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+      .contact-links a {
+        justify-content: center;
+      }
+      @media (max-width: 600px) {
+        .contact-links {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header-container"></div>
+
+    <div id="content">
+      <div class="card">
+        <h1>联系方式</h1>
+        <p class="subtitle">欢迎与我取得联系</p>
+
+        <p class="bio">
+          如果你对我的项目或技术分享感兴趣，或有任何问题想交流，<br />
+          欢迎通过以下方式找到我。
+        </p>
+
+        <div class="links contact-links">
+          <a
+            href="#"
+            class="primary"
+            data-clipboard-text="cznzhou520@gmail.com"
+            onclick="copyText(this); return false;"
+            >✉️ 复制邮箱</a
+          >
+          <a
+            href="#"
+            class="primary"
+            data-clipboard-text="2147769250"
+            onclick="copyText(this); return false;"
+            >💬 QQ：2147769250</a
+          >
+          <a href="https://t.me/cznzhou" target="_blank" class="primary"
+            >✈️ Telegram</a
+          >
+          <a href="https://github.com/cznzhou" target="_blank" class="primary"
+            >🐙 GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      &copy; 2026 cznzhou &nbsp;·&nbsp; Built with GitHub Pages
+    </footer>
+
+    <div id="toast" class="toast">已复制</div>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
