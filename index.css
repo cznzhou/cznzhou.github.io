@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #333;
+}
+
+/* 卡片容器 */
+.card {
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* 头像（支持 <img> 标签） */
+.avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* 标题 */
+h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #2d3748;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #718096;
+    margin-bottom: 2rem;
+    font-weight: 400;
+}
+
+/* 个人简介 */
+.bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-bottom: 2.5rem;
+    padding: 0 0.5rem;
+}
+
+/* 链接按钮区域 */
+.links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.links a,
+.links .email-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.8rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+}
+
+.links a.primary {
+    background: #667eea;
+    color: white;
+    box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
+}
+
+.links a.primary:hover {
+    background: #5a6fd6;
+    transform: scale(1.05);
+}
+
+.links .email-copy {
+    background: transparent;
+    color: #667eea;
+    border-color: #667eea;
+    cursor: pointer;
+    user-select: all;
+}
+
+.links .email-copy:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* 底部 */
+.footer {
+    font-size: 0.85rem;
+    color: #a0aec0;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    margin-top: 1rem;
+}
+
+.footer a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* Toast 提示 - 右下角弹出 */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #323232;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 响应式 - 手机端适配 */
+@media (max-width: 500px) {
+    .card {
+        padding: 2rem 1.5rem;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    .avatar {
+        width: 100px;
+        height: 100px;
+    }
+        .links a,
+    .links .email-copy {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .toast {
+        bottom: 20px;
+        right: 20px;
+        left: 20px;
+        text-align: center;
+    }
+}

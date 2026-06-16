@@ -1,9 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-    <title>我的网站</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cznzhou - 个人主页</title>
+    <!-- 使用 Google Fonts 提升字体美观度 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- 外部样式表 -->
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="card">
+        <!-- 头像：请将文件放于同目录并修改 src 为实际文件名，如 avatar.jpg / avatar.png -->
+        <img src="./avatar.jpg" alt="头像" class="avatar">
+        <h1>cznzhou</h1>
+        <p class="subtitle">开发者 / 学生 / 热爱技术</p>
+        <p class="bio">
+            你好！我是 cznzhou。这个网站是我在 GitHub Pages 上的个人主页。<br>
+            我目前正在学习前端开发，喜欢探索新事物。<br>
+            欢迎通过下面的方式联系我！
+        </p>
+        <div class="links">
+            <a href="https://github.com/cznzhou" target="_blank" class="primary">GitHub</a>
+            <!-- 点击邮箱可复制 -->
+            <span class="email-copy" onclick="copyEmail()">cznzhou520@gmail.com</span>
+        </div>
+        <div class="footer">
+            Powered by <a href="https://pages.github.com">GitHub Pages</a> &middot; 2025
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div id="toast" class="toast">已复制邮箱</div>
+
+    <script>
+        function copyEmail() {
+            const email = document.querySelector('.email-copy').textContent.trim();
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000);
+            }).catch(err => {
+                console.error('复制失败:', err);
+            });
+        }
+    </script>
 </body>
 </html>
