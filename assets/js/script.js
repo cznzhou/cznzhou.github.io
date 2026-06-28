@@ -3,7 +3,7 @@
  * 从 assets/nav.html 获取导航栏 HTML，并根据当前页面自动高亮 active 项
  */
 function loadNavbar() {
-  fetch('/assets/nav.html')
+  fetch('assets/nav.html')
     .then(response => response.text())
     .then(html => {
       // 创建临时容器解析 HTML
