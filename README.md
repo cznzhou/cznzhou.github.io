@@ -8,7 +8,7 @@
 
 ## ✨ 特性
 
-- 🧭 **导航栏组件**：通过 JavaScript 动态加载统一导航栏 (`assets/nav.html`)，多页面共享同一导航，当前页面自动高亮
+- 🧭 **导航栏组件**：通过 JavaScript 写入文件内部，动态加载导航栏，并高亮当前页面，使其更易于维护
 - 🎨 **渐变 Logo**：`cznzhou` 标识使用渐变色（粉 → 红 → 蓝）并带有发光文字阴影，hover 时缩放并增强光效
 - 🃏 **双卡片系统**：
   - `.card` — 毛玻璃风格卡片（用于首页、联系方式等）
@@ -30,7 +30,6 @@ cznzhou.github.io/
 ├── README.md                 # 项目说明文档
 ├── LICENSE                   # 许可证
 ├── assets/
-│   ├── nav.html              # 统一导航栏组件
 │   ├── forme.html            # 关于我页面
 │   ├── projects.html         # 项目页面
 │   ├── skills.html           # 技能页面
