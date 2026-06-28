@@ -1,48 +1,68 @@
 /**
- * 加载导航栏组件
- * 从 assets/nav.html 获取导航栏 HTML，并根据当前页面自动高亮 active 项
+ * 导航栏链接配置数据（去掉开头的 '/'，改用相对路径）
+ */
+const navLinks = [
+  { href: 'index.html', page: 'index', text: '首页' },
+  { href: 'assets/forme.html', page: 'forme', text: '关于我' },
+  { href: 'assets/projects.html', page: 'projects', text: '项目' },
+  { href: 'assets/skills.html', page: 'skills', text: '技能' },
+  { href: 'assets/contact.html', page: 'contact', text: '联系方式' }
+];
+
+/**
+ * 动态加载导航栏组件
  */
 function loadNavbar() {
-  fetch('assets/nav.html')
-    .then(response => response.text())
-    .then(html => {
-      // 创建临时容器解析 HTML
-      const temp = document.createElement('div');
-      temp.innerHTML = html;
-      const header = temp.querySelector('#header');
-      if (!header) return;
+  // 1. 获取当前路径，判断当前页面（用于高亮）
+  const path = window.location.pathname;
+  let currentPage = 'index';
+  if (path.includes('forme.html')) currentPage = 'forme';
+  else if (path.includes('projects.html')) currentPage = 'projects';
+  else if (path.includes('skills.html')) currentPage = 'skills';
+  else if (path.includes('contact.html')) currentPage = 'contact';
 
-      // 确定当前页面（从路径中提取文件名，不含扩展名）
-      const path = window.location.pathname;
-      let currentPage = 'index';
-      if (path.includes('forme.html')) {
-        currentPage = 'forme';
-      } else if (path.includes('projects.html')) {
-        currentPage = 'projects';
-      } else if (path.includes('skills.html')) {
-        currentPage = 'skills';
-      } else if (path.includes('contact.html')) {
-        currentPage = 'contact';
-      }
+  // 2. 🔥 核心修复：计算当前页面到项目根目录的相对路径前缀
+  // 例如：当前在 /assets/forme.html -> 深度为 1 -> 前缀为 '../'
+  //      当前在 /index.html       -> 深度为 0 -> 前缀为 './'
+  const segments = path.split('/').filter(seg => seg && !seg.includes('.html'));
+  const depth = segments.length;
+  const pathPrefix = depth === 0 ? './' : '../'.repeat(depth);
 
-      // 为当前页面对应的链接设置 active 类
-      const links = header.querySelectorAll('#nav a');
-      links.forEach(link => {
-        const page = link.getAttribute('data-page');
-        if (page === currentPage) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
+  // 3. 构建导航栏结构
+  const header = document.createElement('header');
+  header.id = 'header';
 
-      // 查找容器并插入导航栏
-      const container = document.getElementById('header-container');
-      if (container) {
-        container.replaceWith(header);
-      }
-    })
-    .catch(err => console.error('导航栏加载失败:', err));
+  // Logo（也要用相对路径）
+  const logo = document.createElement('a');
+  logo.id = 'logo';
+  logo.href = pathPrefix + 'index.html';
+  logo.textContent = 'cznzhou';
+
+  const nav = document.createElement('nav');
+  nav.id = 'nav';
+
+  navLinks.forEach(item => {
+    const a = document.createElement('a');
+    // 拼接动态前缀 + 配置中的路径
+    a.href = pathPrefix + item.href;
+    a.setAttribute('data-page', item.page);
+    a.textContent = item.text;
+    if (item.page === currentPage) {
+      a.classList.add('active');
+    }
+    nav.appendChild(a);
+  });
+
+  header.appendChild(logo);
+  header.appendChild(nav);
+
+  // 替换 header-container
+  const container = document.getElementById('header-container');
+  if (container) {
+    container.replaceWith(header);
+  } else {
+    console.warn('未找到 id="header-container" 的元素，导航栏无法插入');
+  }
 }
 
 // 通用复制函数：从元素的 data-clipboard-text 属性复制内容
