@@ -21,7 +21,7 @@ body {
 
 /* ========== 导航栏 ========== */
 #header {
-    width: 75%;
+    width: 75vw;
     max-width: auto;
     min-width: 700px;
     margin-top: 2rem;
