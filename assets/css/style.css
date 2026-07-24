@@ -21,9 +21,8 @@ body {
 
 /* ========== 导航栏 ========== */
 #header {
-    width: 75vw;
-    max-width: auto;
-    min-width: 700px;
+    width: clamp(320px, 75vw, 1200px);  /* 自适应，手机不低于 320px，桌面最大 1200px */
+    min-width: 0;                       /* 移除原 700px 限制，交给 clamp 控制 */
     margin-top: 2rem;
     padding: 1rem 2.5rem;
     background: rgba(255, 255, 255, 0.85);
@@ -113,6 +112,8 @@ body {
     padding: 3rem 2.5rem;
     text-align: center;
     transition: transform 0.3s ease;
+    max-width: 100%;      /* 防溢出 */
+    overflow: hidden;     /* 防溢出 */
 }
 
 .card:hover {
@@ -127,6 +128,8 @@ body {
     width: 100%;
     padding: 3rem 2.5rem;
     transition: transform 0.3s ease;
+    max-width: 100%;      /* 防溢出 */
+    overflow: hidden;     /* 防溢出 */
 }
 
 .article-card:hover {
@@ -266,17 +269,24 @@ h1 {
     transform: translateY(0);
 }
 
-/* 响应式适配 */
+/* ========== 响应式适配 ========== */
 @media (max-width: 600px) {
     body {
         padding: 1rem;
     }
 
     #header {
-        flex-direction: column;
-        gap: 0.8rem;
+        width: 100% !important;   /* 占满屏幕宽度 */
+        min-width: 0 !important;  /* 移除 700px 限制 */
         padding: 1rem 1.5rem;
         margin-top: 1rem;
+        border-radius: 16px;
+        flex-wrap: wrap;          /* 允许换行 */
+        gap: 0.8rem;
+    }
+
+    #logo {
+        font-size: 1.2rem;
     }
 
     #nav {
