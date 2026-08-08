@@ -16,7 +16,7 @@
 - 📱 **响应式适配**：完美适配移动端与桌面端，导航栏在小屏下自动换行
 - 📋 **通用复制功能**：点击带 `data-clipboard-text` 属性的元素即可复制任意文本，附 Toast 提示
 - 💨 **动效柔和**：卡片悬浮上移、导航链接 hover 放大、渐变 Logo 过渡
-- 🧩 **纯原生 HTML + CSS + JavaScript**，零外部依赖（除 Google Fonts）
+- 🧩 **纯原生 HTML + CSS + JavaScript**，零外部依赖
 
 ## 🖥️ 预览
 
@@ -48,7 +48,7 @@ cznzhou.github.io/
    ```bash
    git clone https://github.com/cznzhou/cznzhou.github.io.git
    ```
-2. 直接在浏览器打开 `index.html` 即可预览（导航栏需要本地 HTTP 服务，可用 `npx serve` 或 VS Code Live Server 等）。
+2. 直接双击打开 `index.html` 即可预览（导航栏也能正常工作）；推荐用本地 HTTP 服务（`npx serve` 或 VS Code Live Server）以获得最佳体验。
 
 ## 📬 联系我
 
