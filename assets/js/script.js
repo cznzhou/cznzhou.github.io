@@ -90,3 +90,7 @@ function copyEmail() {
 // 页面加载时自动加载导航栏
 document.addEventListener('DOMContentLoaded', loadNavbar);
 
+// 自动更新 footer 年份
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
