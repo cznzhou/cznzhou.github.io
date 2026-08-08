@@ -81,12 +81,6 @@ function copyText(el) {
   });
 }
 
-// 原有复制邮箱功能（兼容旧写法）
-function copyEmail() {
-  const el = document.querySelector('.email-copy');
-  if (el) copyText(el);
-}
-
 // 页面加载时自动加载导航栏
 document.addEventListener('DOMContentLoaded', loadNavbar);
 
