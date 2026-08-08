@@ -44,7 +44,20 @@
     </style>
   </head>
   <body>
-    <div id="header-container"></div>
+    <div id="header-container">
+      <noscript>
+        <header id="header">
+          <a id="logo" href="../index.html">cznzhou</a>
+          <nav id="nav">
+            <a href="../index.html">首页</a>
+            <a href="../assets/forme.html">关于我</a>
+            <a href="../assets/projects.html">项目</a>
+            <a href="../assets/skills.html">技能</a>
+            <a href="../assets/contact.html" class="active">联系方式</a>
+          </nav>
+        </header>
+      </noscript>
+    </div>
 
     <div id="content">
       <div class="card">
@@ -71,10 +84,10 @@
             onclick="copyText(this); return false;"
             >💬 QQ：2147769250</a
           >
-          <a href="https://t.me/cznzhou" target="_blank" class="primary"
+          <a href="https://t.me/cznzhou" target="_blank" rel="noopener noreferrer" class="primary"
             >✈️ Telegram</a
           >
-          <a href="https://github.com/cznzhou" target="_blank" class="primary"
+          <a href="https://github.com/cznzhou" target="_blank" rel="noopener noreferrer" class="primary"
             >🐙 GitHub</a
           >
         </div>
