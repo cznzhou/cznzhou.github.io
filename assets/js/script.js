@@ -21,12 +21,23 @@ function loadNavbar() {
   else if (path.includes('skills.html')) currentPage = 'skills';
   else if (path.includes('contact.html')) currentPage = 'contact';
 
-  // 2. 🔥 核心修复：计算当前页面到项目根目录的相对路径前缀
-  // 例如：当前在 /assets/forme.html -> 深度为 1 -> 前缀为 '../'
-  //      当前在 /index.html       -> 深度为 0 -> 前缀为 './'
-  const segments = path.split('/').filter(seg => seg && !seg.includes('.html'));
-  const depth = segments.length;
-  const pathPrefix = depth === 0 ? './' : '../'.repeat(depth);
+  // 2. 计算当前页面到项目根目录的相对路径前缀
+  // 不猜测 URL 深度，而是读取本脚本 <script> 标签自身的 src：
+  // src 去掉末尾的 assets/js/script.js 后，即为"当前页面 -> 项目根目录"的路径
+  //   index.html      中 src="assets/js/script.js"        -> 前缀 './'
+  //   assets/forme.html 中 src="../assets/js/script.js"   -> 前缀 '../'
+  //   404.html        中 src="/assets/js/script.js"       -> 前缀 '/'
+  // 这样同时兼容：file:// 本地预览、GitHub Pages 深层 404、子路径部署
+  let pathPrefix = './';
+  const scripts = document.getElementsByTagName('script');
+  for (const s of scripts) {
+    const src = (s.getAttribute('src') || '').trim();
+    const m = src.match(/^(.*)assets\/js\/script\.js(?:\?.*)?$/);
+    if (m) {
+      pathPrefix = m[1] || './';
+      break;
+    }
+  }
 
   // 3. 构建导航栏结构
   const header = document.createElement('header');
