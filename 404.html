@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>404 - 页面未找到 | cznzhou</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico">
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- GitHub Pages 会在任意路径下返回 404.html，因此这里必须使用绝对路径，否则深层路径下资源全部 404 -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
     <div id="header-container"></div>
@@ -18,7 +19,7 @@
           你访问的页面不存在，可能已被移除或地址有误。
         </p>
         <div class="links">
-          <a href="index.html" class="primary">🏠 返回首页</a>
+          <a href="/" class="primary">🏠 返回首页</a>
         </div>
       </div>
     </div>
@@ -26,6 +27,6 @@
     <footer class="footer">
       &copy; <span id="year"></span> cznzhou &nbsp;·&nbsp; Built with GitHub Pages
     </footer>
-    <script src="assets/js/script.js"></script>
+    <script src="/assets/js/script.js"></script>
   </body>
 </html>
