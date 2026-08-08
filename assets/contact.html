@@ -33,7 +33,8 @@
         gap: 1rem;
         margin-bottom: 2rem;
       }
-      .contact-links a {
+      .contact-links a,
+      .contact-links button {
         justify-content: center;
       }
       @media (max-width: 600px) {
@@ -70,20 +71,12 @@
         </p>
 
         <div class="links contact-links">
-          <a
-            href="#"
-            class="primary"
-            data-clipboard-text="cznzhou520@gmail.com"
-            onclick="copyText(this); return false;"
-            >✉️ cznzhou520@gmail.com</a
-          >
-          <a
-            href="#"
-            class="primary"
-            data-clipboard-text="2147769250"
-            onclick="copyText(this); return false;"
-            >💬 QQ：2147769250</a
-          >
+          <button type="button" class="primary" data-clipboard-text="cznzhou520@gmail.com">
+            ✉️ cznzhou520@gmail.com
+          </button>
+          <button type="button" class="primary" data-clipboard-text="2147769250">
+            💬 QQ：2147769250
+          </button>
           <a href="https://t.me/cznzhou" target="_blank" rel="noopener noreferrer" class="primary"
             >✈️ Telegram</a
           >

@@ -129,8 +129,14 @@ function copyText(el) {
   }
 }
 
-// 页面加载时自动加载导航栏
-document.addEventListener('DOMContentLoaded', loadNavbar);
+// 页面加载时自动加载导航栏 + 绑定复制按钮
+// 为所有带 data-clipboard-text 的元素绑定复制事件（替代内联 onclick）
+document.addEventListener('DOMContentLoaded', () => {
+  loadNavbar();
+  document.querySelectorAll('[data-clipboard-text]').forEach(el => {
+    el.addEventListener('click', () => copyText(el));
+  });
+});
 
 // 自动更新 footer 年份
 const yearEl = document.getElementById('year');

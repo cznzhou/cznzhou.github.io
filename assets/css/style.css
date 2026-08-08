@@ -191,7 +191,7 @@ h1 {
 }
 
 .links a,
-.links .email-copy {
+.links button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -202,15 +202,19 @@ h1 {
     font-size: 0.95rem;
     transition: all 0.2s ease;
     border: 2px solid transparent;
+    font-family: inherit;
+    cursor: pointer;
 }
 
-.links a.primary {
+.links a.primary,
+.links button.primary {
     background: var(--primary);
     color: white;
     box-shadow: 0 4px 14px rgba(102, 126, 234, 0.3);
 }
 
-.links a.primary:hover {
+.links a.primary:hover,
+.links button.primary:hover {
     background: #5a6fd6;
     transform: scale(1.05);
 }
@@ -311,7 +315,7 @@ h1 {
         height: 100px;
     }
     .links a,
-    .links .email-copy {
+    .links button {
         width: 100%;
         justify-content: center;
     }
