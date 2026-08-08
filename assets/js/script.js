@@ -60,6 +60,7 @@ function loadNavbar() {
     a.textContent = item.text;
     if (item.page === currentPage) {
       a.classList.add('active');
+      a.setAttribute('aria-current', 'page');
     }
     nav.appendChild(a);
   });
