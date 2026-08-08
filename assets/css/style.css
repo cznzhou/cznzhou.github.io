@@ -238,19 +238,6 @@ h1 {
     transform: scale(1.05);
 }
 
-.links .email-copy {
-    background: transparent;
-    color: var(--primary);
-    border-color: var(--primary);
-    cursor: pointer;
-    user-select: all;
-}
-
-.links .email-copy:hover {
-    background: var(--primary);
-    color: white;
-}
-
 /* 底部 */
 .footer {
     font-size: 0.85rem;
