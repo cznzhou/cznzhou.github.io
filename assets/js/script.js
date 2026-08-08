@@ -77,19 +77,56 @@ function loadNavbar() {
 }
 
 // 通用复制函数：从元素的 data-clipboard-text 属性复制内容
+let toastTimer = null;
+
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.classList.add('show');
+  // 清除上一次的计时器，避免连续点击时 toast 被提前隐藏
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
 function copyText(el) {
   const text = el.getAttribute('data-clipboard-text');
   if (!text) return;
-  navigator.clipboard.writeText(text).then(() => {
-        const toast = document.getElementById('toast');
-    if (toast) {
-      toast.textContent = '已复制 ' + text;
-        toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2000);
-}
-  }).catch(err => {
+
+  const done = () => showToast('已复制 ' + text);
+  const fail = err => {
     console.error('复制失败:', err);
-  });
+    showToast('复制失败，请手动复制');
+  };
+
+  // 优先使用 Clipboard API（需要 HTTPS 或 localhost 等安全上下文）
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    try {
+      navigator.clipboard.writeText(text).then(done, fail);
+    } catch (err) {
+      fail(err);
+    }
+    return;
+  }
+
+  // 回退方案：隐藏 textarea + execCommand（兼容 file:// 与非安全上下文）
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    if (document.execCommand('copy')) {
+      done();
+    } else {
+      fail(new Error('execCommand 返回 false'));
+    }
+  } catch (err) {
+    fail(err);
+  } finally {
+    document.body.removeChild(textarea);
+  }
 }
 
 // 页面加载时自动加载导航栏
